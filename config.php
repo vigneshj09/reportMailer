@@ -2,7 +2,7 @@
     define("HOST", "localhost");
     define("USERNAME", "root");
     define("PASSWORD", "");
-    define("DB", "mailReport");
+    define("DB", "");
 
     $con = mysqli_connect(HOST, USERNAME, PASSWORD, DB);
 

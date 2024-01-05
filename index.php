@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Entry Form</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Tarapore Towers</title>
     <style>
         * {
             padding: 0px;
@@ -74,7 +75,7 @@
 </head>
 <body>
     <?php include "navBar.php"; ?>
-    <h1>Weekly Report ( Tarapore Towers - TTB )</h1>
+    <h1>Weekly Report (Tarapore Towers - TTB)</h1>
     <div class="form-container">
         <form>
             <!-- Date -->
@@ -82,7 +83,7 @@
             <input type="date" name="dateInput" id="dateInput" value="<?php echo date('Y-m-d'); ?>" required>
    
             <!-- Entry -->
-            <label>Checked:  </label>
+            <!--<label>Checked:  </label>
                 <label for="on">
                     <input type="radio" name="online" value="on" id="on" checked/>    
                         On
@@ -90,19 +91,19 @@
                 <label for="off">
                      <input type="radio" name="online" value="off" id="off"/>
                          Off
-                </label><br/><br/>
-                <label for="morning">Morning</label>
+                </label><br/><br/> -->
+                <label for="morning">Morning Check</label>
                     <input type="checkbox" name="morning" id="morning">
-                <label for="afternoon">Afternoon</label>
+                <label for="afternoon">Afternoon Check</label>
                     <input type="checkbox" name="afternoon" id="afternoon">
-                <label for="evening">Evening</label>
+                <label for="evening">Evening Check</label>
                     <input type="checkbox" name="evening" id="evening">
-                <label for="night">Night</label>
+                <label for="night">Night Check</label>
                     <input type="checkbox" name="night" id="night"><br/><br/>
 
             <!-- Status Desc. -->
             <label for="status">Status:</label>
-                <textarea name="status" id="status" cols="30" rows="4" required></textarea>
+                <textarea name="status" id="status" cols="30" rows="4" placeholder="Enter status..." required>Online</textarea>
             <input type="submit" value="Submit">
         </form>
     </div>
@@ -128,7 +129,7 @@
                             $("#afternoon").prop("checked", false);
                             $("#evening").prop("checked", false);
                             $("#night").prop("checked", false);
-                            $("#status").val("");
+                            //$("#status").val("");
                         } else {
                             //~ Parse the JSON response and update UI elements
                             var dataObject = JSON.parse(rep);
@@ -156,7 +157,7 @@
         $("form").submit(function(e) {
             e.preventDefault();
             var dateInput = $('#dateInput').val();
-            var mode = $("input[name='online']:checked").val(); 
+            // var mode = $("input[name='online']:checked").val(); 
             var status = $("#status").val();
             var morning = $("#morning").prop('checked');
             var afternoon = $("#afternoon").prop('checked');
@@ -169,7 +170,7 @@
                 data: {
                     action: "save",
                     dateInput: dateInput,
-                    mode: mode,
+                    // mode: mode,
                     status: status,
                     morning: morning,
                     afternoon: afternoon,
@@ -178,6 +179,7 @@
                 },
                 success: function(rep) {
                     console.log(rep);
+                    location.reload();
                     alert(rep);
                 },
                 error: function(rep) {

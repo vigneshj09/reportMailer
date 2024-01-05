@@ -35,6 +35,7 @@
         a {
             color: #fff;
             text-decoration: none;
+            padding: 15px;
         }
 
         a:hover {
@@ -52,6 +53,13 @@
             cursor: pointer;
             font-size: larger;
             color: #fff;
+        }
+        .current-page a{
+            color: #000; 
+        }
+        .current-page{
+            background-color: #fff;
+            border-radius: 15px;
         }
 
         @media screen and (max-width: 768px) {
@@ -85,8 +93,12 @@
        
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <ul>
-            <li><a href="index.php">Entry</a></li>
-            <li><a href="report.php">Report</a></li>
+            <li <?php 
+                    if(basename($_SERVER['PHP_SELF']) == 'index.php') 
+                        echo 'class="current-page"'; ?>><a href="index.php">Entry</a></li>
+            <li <?php 
+                    if(basename($_SERVER['PHP_SELF']) == 'report.php') 
+                        echo 'class="current-page"'; ?>><a href="report.php">Report</a></li>
         </ul>
     </nav>
 

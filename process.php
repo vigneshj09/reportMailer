@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $Evening = isset($_POST['evening']) && $_POST['evening'] == 'true' ? 1 : 0;
         $afternoon = isset($_POST['afternoon']) && $_POST['afternoon'] == 'true' ? 1 : 0;
 
-        $mode = isset($_POST['mode']) ? $_POST['mode'] : null;
+        $mode = isset($_POST['mode']) ? $_POST['mode'] : 'Yes';
 
         $date = mysqli_real_escape_string($con, $date);
         $mode = mysqli_real_escape_string($con, $mode);

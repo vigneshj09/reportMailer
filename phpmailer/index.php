@@ -13,20 +13,20 @@ require "../config.php";
 $curDate =date('d-M-y', strtotime("-0 days"));
 $lastDate =date('d-M-y', strtotime("-6 days"));
 $name = "Weekly Report";  
-$to = "dhruv@truetracking.in";  
-$subject = "Weekly Report ( Tarapore Towers - TTB ) for Week :".$curDate." to ".$lastDate." ";
+$to = "vigneshj@eybus.in";  
+$subject = "Weekly Report ( Tarapore Towers - TTB ) for Week :".$lastDate." to ".$curDate." ";
 $from = "pagalavan@magdyn.in";  
 $password = "Pagalavan@12345";
 
 
 $emailBody = "<html><body>";
-$emailBody .= "<p>Dear Sir,<br/><br/>Please find below the Weekly Report (Tarapore Towers-TTB) for Week starting <b>".$curDate."</b> to <b>".$lastDate."</b> <br/></p>";
+$emailBody .= "<p>Dear Sir,<br/><br/>Please find below the Weekly Report (Tarapore Towers-TTB) for Week starting <b>".$lastDate."</b> to <b>".$curDate."</b> <br/></p>";
 $emailBody .= "<table style='border-collapse: collapse; width: 100%;' border='1'>";
 $emailBody .= "<thead style='background-color: #3498db; color: #fff;'><tr><th style='padding: 10px;'>Date</th><th style='padding: 10px;'>Checked</th><th style='padding: 10px;'>Status</th></tr></thead>";
 $emailBody .= "<tbody>";
 
 //! Check for each day if data is found or not
-for ($i = 0; $i < 7; $i++) {
+for ($i = 6; $i >= 0; $i--) {
     $currentDate = date('Y-m-d', strtotime("-$i days"));
     $dayQuery = mysqli_query($con, "
         SELECT * FROM report
@@ -43,8 +43,8 @@ for ($i = 0; $i < 7; $i++) {
     } else {
         //~ Show data for the day if no actual data is found
         $emailBody .= "<tr><td style='padding: 8px; border: 1px solid #ddd;'>".date('d-M-y', strtotime($currentDate))."</td>";
-        $emailBody .= "<td style='padding: 8px; border: 1px solid #ddd;'>Yes</td>";
-        $emailBody .= "<td style='padding: 8px; border: 1px solid #ddd;'>Online</td></tr>";
+        $emailBody .= "<td style='padding: 8px; border: 1px solid #ddd;'></td>";
+        $emailBody .= "<td style='padding: 8px; border: 1px solid #ddd;'></td></tr>";
     }
 }
 $emailBody .= "</tbody></table><br/>";

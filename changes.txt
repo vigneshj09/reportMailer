@@ -1,0 +1,2 @@
+phpmailer/index.php
+        -> Assign values for $to, $from and $password.
